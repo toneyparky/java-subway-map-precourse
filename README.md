@@ -342,7 +342,7 @@ Q. 종료
 Q. 종료
 
 ## 원하는 기능을 선택하세요.
-4
+5
 
 [ERROR] 선택할 수 없는 기능입니다.
 
@@ -396,14 +396,6 @@ B. 돌아가기
 ### 프로그래밍 요구사항 - Application
 - Application 클래스를 활용해 구현해야 한다.
 - Application의 패키지 구조는 변경하지 않는다.
-- 주석을 참고하여 구현할 수 있으며 주석대로 구현하지 않아도 되고 삭제해도 무관하다. 
-```java
-public class Application {
-    public static void main(String[] args) {
-        ...
-    }
-}
-```
 
 ### 프로그래밍 요구사항 - Station, Line
 - Station, Line 클래스를 활용하여 지하철역과 노선을 구현해야 한다.
@@ -411,23 +403,6 @@ public class Application {
 - 필드(인스턴스 변수)인 name의 접근 제어자 private을 변경할 수 없다.
 - 가능하면 setter 메소드(ex. setXXX)를 추가하지 않고 구현한다.
  
-```java
-public class Station {
-    private String name;
-
-    public Station(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    // 추가 기능 구현
-}
-
-```
-
 ### 프로그래밍 요구사항 - StationRepository, LineRepository
 - Station과 Line의 상태를 저장할 수 있는 StationRepository, LineRepository를 제공한다.
 - 필요 시 StationRepository, LineRepository 이 외 추가로 Repository를 만들 수 있다.
@@ -435,24 +410,6 @@ public class Station {
 - 객체들의 상태를 관리하기 위해서 XXXRepository 클래스를 활용해 저장 로직을 구현해야 한다.
 - 필요에 따라 자유롭게 수정이 가능하다.
  
-```java
-public class StationRepository {
-    private static final List<Station> stations = new ArrayList<>();
-
-    public static List<Station> stations() {
-        return Collections.unmodifiableList(stations);
-    }
-
-    public static void addStation(Station station) {
-        stations.add(station);
-    }
-
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
-    }
-}
-```
-
 <br>
 
 ## 📈 진행 요구사항
