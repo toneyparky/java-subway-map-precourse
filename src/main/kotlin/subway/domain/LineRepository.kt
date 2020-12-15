@@ -14,7 +14,7 @@ object LineRepository {
         lines.add(line)
     }
 
-    fun deleteLineByName(name: String?): Boolean {
+    fun deleteLineByName(name: String): Boolean {
         return lines.removeAll { line -> line.isSame(name) }
     }
 }
