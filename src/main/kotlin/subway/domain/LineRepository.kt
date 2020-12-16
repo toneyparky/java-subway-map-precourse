@@ -8,13 +8,20 @@ object LineRepository {
         return lines.toList()
     }
 
-    fun addLine(line: Line?) {
-        // TODO: 2020/12/13 종점 입력받기 
-        require(line != null && !lines.contains(line)) { "[ERROR] 노선을 추가할 수 없습니다." }
+    fun addLine(line: Line) {
+        // TODO: 2020/12/13 종점 입력받기
         lines.add(line)
     }
 
     fun deleteLineByName(name: String): Boolean {
         return lines.removeAll { line -> line.isSame(name) }
+    }
+
+    fun clear() {
+        lines.clear()
+    }
+
+    fun existByName(name: String): Boolean {
+        return lines.any { it.isSame(name) }
     }
 }

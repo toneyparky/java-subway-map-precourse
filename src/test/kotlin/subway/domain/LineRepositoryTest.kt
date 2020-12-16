@@ -21,16 +21,6 @@ internal class LineRepositoryTest {
         assertThat(LineRepository.lines()).contains(expected)
     }
 
-    @Test
-    fun `이미 추가된 노선을 추가할 경우 예외가 발생한다`() {
-        val line = Line("2호선")
-        LineRepository.addLine(line)
-
-        assertThatThrownBy { LineRepository.addLine(line) }
-                .isInstanceOf(IllegalArgumentException::class.java)
-                .hasMessage("[ERROR] 노선을 추가할 수 없습니다.")
-    }
-
     @CsvSource(value = ["2호선,true", "3호선,false"])
     @ParameterizedTest
     fun `존재하는 노선을 삭제하면 노선을 삭제하고 true를 반환하고 존재하지 않는 역을 삭제하면 false를 반환한다`(name: String, expected: Boolean) {
