@@ -22,4 +22,8 @@ object StationRepository {
     fun existByName(name: String): Boolean {
         return stations.any { it.isSame(name) }
     }
+
+    fun existAllByNames(names: List<String>): Boolean {
+        return names.all { existByName(it) }
+    }
 }

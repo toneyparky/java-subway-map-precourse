@@ -1,6 +1,5 @@
 package subway.domain
 
-
 object LineRepository {
     private val lines: MutableList<Line> = mutableListOf()
 
@@ -9,7 +8,6 @@ object LineRepository {
     }
 
     fun addLine(line: Line) {
-        // TODO: 2020/12/13 종점 입력받기
         lines.add(line)
     }
 
