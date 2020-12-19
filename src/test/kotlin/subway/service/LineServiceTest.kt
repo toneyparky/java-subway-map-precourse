@@ -1,7 +1,7 @@
 package subway.service
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -26,7 +26,7 @@ internal class LineServiceTest {
         val request = LineRequest(LINE_NAME, START_STATION_NAME, END_STATION_NAME)
         LineService.create(request)
 
-        assertThat(LineService.findAll()).usingFieldByFieldElementComparator().contains(request.toEntity())
+        assertThat(LineService.findAll()).usingElementComparatorOnFields("name").contains(request.toEntity())
     }
 
     @Test
@@ -34,7 +34,7 @@ internal class LineServiceTest {
         val request = LineRequest(LINE_NAME, START_STATION_NAME, END_STATION_NAME)
         LineService.create(request)
 
-        Assertions.assertThatThrownBy { LineService.create(request) }
+        assertThatThrownBy { LineService.create(request) }
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage("[ERROR] 이미 추가된 이름의 노선을 추가할 수 없습니다.")
     }

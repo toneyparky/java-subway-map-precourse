@@ -20,7 +20,7 @@ internal class StationRepositoryTest {
         assertThat(StationRepository.stations()).contains(expected)
     }
 
-    @CsvSource(value = ["강남역,true", "잠실역,false"])
+    @CsvSource(value = ["강남역,true", "없는역,false"])
     @ParameterizedTest
     fun `존재하는 역을 삭제하면 역을 삭제하고 true를 반환하고 존재하지 않는 역을 삭제하면 false를 반환한다`(name: String, expected: Boolean) {
         val station = Station("강남역")
