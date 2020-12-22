@@ -31,4 +31,13 @@ internal class LineTest {
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage("[ERROR] 노선 이름은 2자 이상이여야 합니다.")
     }
+
+    @Test
+    fun `노선의 구간에 역을 추가한다`() {
+        val line = Line("2호선", Stations(start, end))
+        val addingStation = Station("추가역")
+        line.addStation(addingStation, 2)
+
+        assertThat(line.containStation(addingStation)).isTrue
+    }
 }
