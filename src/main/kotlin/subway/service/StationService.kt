@@ -1,5 +1,6 @@
 package subway.service
 
+import subway.domain.LineRepository
 import subway.domain.Station
 import subway.domain.StationRepository
 import subway.dto.StationRequest
@@ -16,7 +17,7 @@ object StationService {
     }
 
     fun delete(request: StationRequest) {
-        // TODO: 2020/12/13 노선에 등록된 역은 제거할 수 없도록 처리한다
+        require(LineRepository.lines().none { it.containStation(request.toEntity()) }) { "[ERROR] 노선에 포함된 역은 제거할 수 없습니다." }
         StationRepository.deleteStation(request.name)
     }
 
