@@ -4,7 +4,7 @@ object LineRepository {
     private val lines: MutableList<Line> = mutableListOf()
 
     fun lines(): List<Line> {
-        return lines.toList()
+        return lines
     }
 
     fun addLine(line: Line) {

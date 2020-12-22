@@ -4,7 +4,7 @@ object StationRepository {
     private val stations: MutableList<Station> = mutableListOf()
 
     fun stations(): List<Station> {
-        return stations.toList()
+        return stations
     }
 
     fun addStation(station: Station) {
